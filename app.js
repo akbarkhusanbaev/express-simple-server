@@ -18,8 +18,12 @@ app.get('/', (req, res) => {
 })
 
 app.post('/bot1421190534:AAEfEhWJoQBJqJJuPjTimcEKhQId7VtHap4', (req, res) => {
-    console.log(req.body)
-    res.status(200).json({message: 'smth'})
+    if (req.body.message.text === '/start') {
+        return axios.post(`https://api.telegram.org/bot1421190534:AAEfEhWJoQBJqJJuPjTimcEKhQId7VtHap4/sendMessage`, {
+            chat_id: req.body.message.chat.id,
+            text: 'Answer'
+        })
+    }
 })
 
 
